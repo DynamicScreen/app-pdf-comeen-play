@@ -1,0 +1,15 @@
+{
+    "app": {
+        "name": "PDF",
+        "description": "Display a PDF on your screens"
+    },
+    "modules": {
+        "pdf": {
+            "name": "PDF",
+            "description": "Display a PDF on your screens",
+            "options": {
+                "picker": "Media picker"
+            }
+        }
+    }
+}

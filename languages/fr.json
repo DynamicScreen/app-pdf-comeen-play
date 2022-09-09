@@ -1,0 +1,15 @@
+{
+    "app": {
+        "name": "PDF",
+        "description": "Affichez un PDF sur vos écrans"
+    },
+    "modules": {
+        "pdf": {
+            "name": "PDF",
+            "description": "Affichez un PDF sur vos écrans",
+            "options": {
+                "picker": "Media picker"
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+# YAML
+id: app-pdf-comeen-play
+name: app.name
+description: app.description
+logo: far fa-file-pdf
+version: 0.2.0
+channel: stable
+api-level: 1
+color: gray
+category: essentials
+author:
+    name: Comeen
+    email: support@comeen.com
+privileges:
+  needs_media:
+    - identifier: media
+      type: image
+      why: privileges.needs_media.image.why
+  use_remote_files:
+    -   identifier: remoteFiles
+        type: google
+        why: privileges.use_remote_files.google.why
+modules:
+    - name: modules.pdf.name
+      logo: far fa-file-pdf
+      identifier: pdf
+      color: gray
+      type: slide
+      description: modules.pdf.description
+      options:
+          privileges:
+            needs_media:
+              - media
+          vue:
+              component: src/PDF/PDF.ts
+              options: src/PDF/PDFOptions.ts
+          php:
+              handler: \Comeen\PDF\PDF\PDFHandler

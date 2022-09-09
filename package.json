@@ -1,0 +1,19 @@
+{
+  "name": "app-pdf-comeen-play",
+  "version": "0.2.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "author": "Comeen",
+  "dependencies": {
+    "@types/node": "^18.7.15",
+    "i18next": "^20.4.0",
+    "webpack": "^5.50.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.11"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3"
+  }
+}
