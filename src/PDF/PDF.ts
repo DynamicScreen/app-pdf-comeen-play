@@ -16,7 +16,7 @@ export default class PDFSlideModule extends SlideModule {
 
   async onReady() {
     await this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
-      await ability.downloadAndGet(this.context.slide.data.url, { callback: (assetDownload: IAssetDownload) => {
+      await ability.getOrDownload(this.context.slide.data.url, { callback: (assetDownload: IAssetDownload) => {
           assetDownload.onProgress.subscribe((progress, ev) => {
             ev.unsub();
           });
@@ -40,7 +40,7 @@ export default class PDFSlideModule extends SlideModule {
     this.context.onPrepare(() => {
       return new Promise(async (resolve, reject) => {
         await this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
-          url.value = await ability.getDisplayableAsset(slide.data.url).then((asset) => {
+          url.value = await ability.getOrDownload(slide.data.url).then((asset) => {
             return asset.displayableUrl();
           })
         });
@@ -59,7 +59,10 @@ export default class PDFSlideModule extends SlideModule {
     this.context.onResume(async () => {
     });
 
-    this.context.onEnded(async () => {
+    this.context.onEnded(() => {
+      return this.context.assetsStorage().then(async (ability: IAssetsStorageAbility) => {
+        ability.revokeURL(url.value)
+      })
     });
 
     return () => h("div", {
