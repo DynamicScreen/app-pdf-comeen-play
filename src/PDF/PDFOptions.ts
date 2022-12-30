@@ -29,12 +29,17 @@ export default class PDFOptionsModule extends SlideOptionsModule {
     let hybrid_options = computed(() => {
       let options: any = { type: 'pdfs', filetype: fileType.value, 'onUpdate:filetype': (value) => fileType.value = value }
       if (fileType.value == 'media') {
-        options = { ...options, ...update.option('media') }
+        options = { ...options, ...update.option('media'), onSelectedMedias: (medias: Array<any>) => {
+          context.updateAutoName(medias[0]?.filename)
+        } }
       } else {
         options = {
           ...options,
           ...update.option('remoteFiles'),
-          noAccountsSelect: true
+          noAccountsSelect: true,
+          onSelectedMedias: (medias: Array<any>) => {
+            context.updateAutoName(medias[0]?.filename)
+          }
         }
       }
       return options;
